@@ -582,6 +582,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   max_speed: 12
+  grounded_epsilon: 0.05
+  user_layer_platform: 8
 --- !u!54 &2128089298
 Rigidbody:
   m_ObjectHideFlags: 0
