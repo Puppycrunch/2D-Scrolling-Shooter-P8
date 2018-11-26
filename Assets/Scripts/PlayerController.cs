@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody m_rb;
     public float speed = 10.0F;
     public float max_speed = 12.0F;
-    float jump_height = 300.0F;
+    float jump_height = 400.0F;
     private Collider m_collider;
     private float collider_radius = 0.0F;
     public float grounded_epsilon = 0.05F;
@@ -15,8 +15,9 @@ public class PlayerController : MonoBehaviour
     private float get_axis_horizontal = 0.0F;
     private bool get_key_down_space = false;
     public string pickup_tag;
-    public GameManager gm;
     public string livebox_tag;
+    public string finish_tag;
+    public GameManager gm;
 
     // Use this for initialization
     private void Start() {
@@ -55,6 +56,11 @@ public class PlayerController : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             gm.score += 25;
+        }
+        if(other.gameObject.CompareTag(finish_tag))
+        {
+            gm.score += 500;
+            gm.level_finished();
         }
     }
     private void OnTriggerExit(Collider other)
